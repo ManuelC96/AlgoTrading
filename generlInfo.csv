@@ -1,0 +1,11 @@
+Character,	Purpose in URL,	Encoding
+:,	        Separate protocol (http) from address,	%3B
+/,	        Separate domain and directories,	%2F
+#,	        Separate anchors,	%23
+?,	        Separate query string,	%3F
+&,	        Separate query elements,	%26
+@,	        Separate username and password from domain,	%40
+%,	        Indicates an encoded character,	%25
++,	        Indicates a space,	%2B
+
+
