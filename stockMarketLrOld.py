@@ -56,7 +56,7 @@ def getData(originalFunc):
 
 # retrive S&P 500 company tickers
 @getData
-def getSymbol(companyName: str):
+def getSymbolData(companyName: str):
     # env management
     load_dotenv()  # take environment variables from .env.
     url = os.getenv('S&P500list')
@@ -84,4 +84,6 @@ def getSymbol(companyName: str):
     return companies[companyName]
 
 
-df3M = getSymbol("3M")
+df3M = getSymbolData("3M")
+df3M.to_csv("df3M")
+print(df3M.describe())
