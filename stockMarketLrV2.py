@@ -53,5 +53,9 @@ sp500Symbols()
 df3M = getData(symbol="MMM", period="2d", interval="1h")
 df3M.to_csv("df3M")
 
-tr = yf.Ticker('AAPL')
-print(tr.info)
+tk = yf.Ticker('AAPL')
+
+
+df = yf.download("AAPL")
+
+print(df)
