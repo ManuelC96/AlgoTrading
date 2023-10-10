@@ -5,8 +5,9 @@ import pandas as pd
 import requests
 import os
 import json
+import datetime
 from bs4 import BeautifulSoup as bs
-from matplotlib import pyplot as pyplot
+from matplotlib import pyplot as plt
 from dotenv import load_dotenv
 
 # retrive S&P 500 company tickers finalcial historycal data
@@ -42,20 +43,41 @@ def sp500Symbols():
     return None
 
 
-def getData(symbol=None, period=None, interval=None):
+def getData(symbol=None, startDate=None, endDate=None):
+    '''
+    :paramer symbol: ticker
+    :paramer startDate: str(YYYY-MM-DD)
+    :paramer endDate: str(YYYY-MM-DD)
+
+    '''
     # dowload hiastorical data
-    tk = yf.Ticker(symbol)
-    return tk.history(period=period, interval=interval)
+    df = yf.download(symbol, start=startDate, end=endDate)
+    return df
 
 
 sp500Symbols()
+today = str(datetime.date.today())
+print(today)
+df = getData("AMZN", startDate="2023-01-01", endDate=today)
 
-df3M = getData(symbol="MMM", period="2d", interval="1h")
-df3M.to_csv("df3M")
+normDf = (df-df.min())/(df.max()-df.min())
+normDf.reset_index(inplace=True)
+print(normDf)
 
-tk = yf.Ticker('AAPL')
+plt.style.use('dark_background')
+fig, ax = plt.subplots()
+ax.plot(normDf["Date"], normDf["Close"], color="yellow", linewidth=.5)
+ax.scatter(normDf["Date"], normDf["Close"], color="red", linewidth=.1)
+plt.tight_layout()
+plt.show()
+
+# polynomial reg using Normal eq
+
+exp = 3
+# equation
+def polynomialEq(X:list, Y:list, Deg: int):
+    
 
 
-df = yf.download("AAPL")
+polynomialEq()
 
-print(df)
