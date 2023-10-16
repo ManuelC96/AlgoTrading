@@ -4,7 +4,6 @@
     "Abbott": "ABT",
     "AbbVie": "ABBV",
     "Accenture": "ACN",
-    "Activision Blizzard": "ATVI",
     "ADM": "ADM",
     "Adobe Inc.": "ADBE",
     "ADP": "ADP",
@@ -501,5 +500,6 @@
     "Zebra Technologies": "ZBRA",
     "Zimmer Biomet": "ZBH",
     "Zions Bancorporation": "ZION",
-    "Zoetis": "ZTS"
+    "Zoetis": "ZTS",
+    "Added": "Date"
 }
